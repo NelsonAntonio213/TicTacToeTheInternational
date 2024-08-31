@@ -1,0 +1,189 @@
+from tkinter import *
+import time
+
+def start_game():
+    global player, game_active, points_needed
+
+    player = 'x'  # Always start with 'x'
+    game_active = True
+    player_label.config(text=player + " turn")
+    frame.pack()
+    start_frame.pack_forget()
+
+def select_points(choice):
+    global points_needed
+    if choice == 'Race to 3':
+        points_needed = 3
+    elif choice == 'Race to 5':
+        points_needed = 5
+    elif choice == 'Race to 7':
+        points_needed = 7
+
+    # Hide the points selection frame and start the game
+    points_frame.pack_forget()
+    start_game()
+
+def game_over(winner):
+    global game_active
+    game_active = False
+    if winner == 'x':
+        update_score('x')
+        if x_score >= points_needed:
+            end_game_message("Congratulations X wins!")
+        else:
+            player_label.config(text="X wins!")
+    elif winner == 'o':
+        update_score('o')
+        if o_score >= points_needed:
+            end_game_message("Congratulations O wins!")
+        else:
+            player_label.config(text="O wins!")
+    elif winner == "Tie":
+        player_label.config(text="Tie!")
+
+def end_game_message(message):
+    player_label.config(text=message)
+    window.after(2000, show_start_menu)  # Delay for 2 seconds before showing start menu
+
+def show_start_menu():
+    global x_score, o_score
+    # Reset scores
+    x_score = 0
+    o_score = 0
+    x_score_label.config(text=f"X Score: {x_score}")
+    o_score_label.config(text=f"O Score: {o_score}")
+
+    # Return to the start menu
+    frame.pack_forget()
+    start_frame.pack()
+
+def next_turn(row, column):
+    global player
+
+    if buttons[row][column]['text'] == "" and check_winner() is False and game_active:
+        buttons[row][column]['text'] = player
+        if check_winner() is False:
+            player = 'o' if player == 'x' else 'x'
+            player_label.config(text=player + " turn")
+        elif check_winner() == True:
+            game_over(player)
+        elif check_winner() == "Tie":
+            game_over("Tie")
+
+def check_winner():
+    for row in range(3):
+        if buttons[row][0]['text'] == buttons[row][1]['text'] == buttons[row][2]['text'] != "":
+            buttons[row][0].config(bg="green")
+            buttons[row][1].config(bg="green")
+            buttons[row][2].config(bg="green")
+            return True
+
+    for column in range(3):
+        if buttons[0][column]['text'] == buttons[1][column]['text'] == buttons[2][column]['text'] != "":
+            buttons[0][column].config(bg="green")
+            buttons[1][column].config(bg="green")
+            buttons[2][column].config(bg="green")
+            return True
+
+    if buttons[0][0]['text'] == buttons[1][1]['text'] == buttons[2][2]['text'] != "":
+        buttons[0][0].config(bg="green")
+        buttons[1][1].config(bg="green")
+        buttons[2][2].config(bg="green")
+        return True
+
+    elif buttons[0][2]['text'] == buttons[1][1]['text'] == buttons[2][0]['text'] != "":
+        buttons[0][2].config(bg="green")
+        buttons[1][1].config(bg="green")
+        buttons[2][0].config(bg="green")
+        return True
+
+    elif empty_spaces() is False:
+        for row in range(3):
+            for column in range(3):
+                buttons[row][column].config(bg="yellow")
+        return "Tie"
+    else:
+        return False
+
+def empty_spaces():
+    spaces = 9
+    for row in range(3):
+        for column in range(3):
+            if buttons[row][column]['text'] != "":
+                spaces -= 1
+    return spaces != 0
+
+def new_game():
+    global player, game_active
+    player = 'x'  # Always reset to 'x'
+    game_active = True
+    player_label.config(text=player + " turn")
+    for row in range(3):
+        for column in range(3):
+            buttons[row][column].config(text="", bg="#F0F0F0")
+
+def update_score(winner):
+    global x_score, o_score
+    if winner == 'x':
+        x_score += 1
+        x_score_label.config(text=f"X Score: {x_score}")
+    elif winner == 'o':
+        o_score += 1
+        o_score_label.config(text=f"O Score: {o_score}")
+
+window = Tk()
+window.title("Tic-Tac-Toe")
+
+# Initialize scores
+x_score = 0
+o_score = 0
+points_needed = 3  # Default points needed
+
+game_active = True
+
+# Start game frame
+start_frame = Frame(window)
+start_frame.pack()
+
+Label(start_frame, text="Press Start to Play", font=('consolas', 20)).pack()
+
+start_button = Button(start_frame, text="Start", font=('consolas', 20), command=lambda: points_menu())
+start_button.pack()
+
+# Points selection menu
+points_frame = Frame(window)
+
+Label(points_frame, text="Select Points Needed to Win", font=('consolas', 20)).pack()
+
+Button(points_frame, text="Race to 3", font=('consolas', 20), command=lambda: select_points('Race to 3')).pack()
+Button(points_frame, text="Race to 5", font=('consolas', 20), command=lambda: select_points('Race to 5')).pack()
+Button(points_frame, text="Race to 7", font=('consolas', 20), command=lambda: select_points('Race to 7')).pack()
+
+def points_menu():
+    start_frame.pack_forget()
+    points_frame.pack()
+
+# Game frame
+frame = Frame(window)
+player_label = Label(frame, font=('consolas', 40))
+player_label.grid(row=0, column=0, columnspan=3)
+
+reset_button = Button(frame, text="Restart", font=('consolas', 20), command=new_game)
+reset_button.grid(row=1, column=0, columnspan=3)
+
+# Score labels
+x_score_label = Label(frame, text=f"X Score: {x_score}", font=('consolas', 20))
+x_score_label.grid(row=2, column=0)
+
+o_score_label = Label(frame, text=f"O Score: {o_score}", font=('consolas', 20))
+o_score_label.grid(row=2, column=2)
+
+buttons = [[None, None, None] for _ in range(3)]
+
+for row in range(3):
+    for column in range(3):
+        buttons[row][column] = Button(frame, text="", font=('consolas', 40), width=5, height=2,
+                                      command=lambda row=row, column=column: next_turn(row, column))
+        buttons[row][column].grid(row=row+3, column=column)
+
+window.mainloop()
