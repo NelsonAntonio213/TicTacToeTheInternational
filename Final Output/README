@@ -1,0 +1,9 @@
+
+
+# Customization for the image file paths
+	You may need to update the paths to images (RC.png, DC.jpg, NICE.png, INTRO.png, MAP.webp, ENDS.png) based on where they are stored on your system.
+****CODE REFERENCE:**** Image.open(r"C:\Users\*****\Desktop\Python Project Folder\RC.png")
+
+You may need to update the paths to images (RC.png, DC.jpg, NICE.png, INTRO.png, MAP.webp, ENDS.png) based on where they are stored on your system.
+
+UI Theme: The game's visual elements (colors, fonts, images) are customizable in the code. Feel free to modify these to suit your preferred theme.
