@@ -1,4 +1,4 @@
-TicTacToeTheInternational (Nelson Klyde B. Antonio)
+# **TicTacToeTheInternational (Nelson Klyde B. Antonio)**
 
 # Customization for the image file paths
 	You may need to update the paths to images (RC.png, DC.jpg, NICE.png, INTRO.png, MAP.webp, ENDS.png) based on where they are stored on your system.
