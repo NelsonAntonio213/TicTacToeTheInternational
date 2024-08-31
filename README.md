@@ -29,7 +29,7 @@ Pillow Library helps with image handling istall it in your CMD : pip install Pil
 Watch this Video for reference: https://www.youtube.com/watch?v=FY3AbpNZwzY&t=150s
 Note: Video is not mine it serves as a guide in completing the project.
 
-2. Copy all the Files in the GitHub including the image used in order for it to run or clone the whole repository
+2. Copy all the Files in the GitHub including the image used in order for it to run or clone the whole repository then ruin the import tkinter as tk to check the Font Styles available in tikinter
 
 
 NOTE: I run this game using my Visual Studio Code.
