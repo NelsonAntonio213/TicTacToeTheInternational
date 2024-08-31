@@ -1,4 +1,4 @@
-# TicTacToeTheInternational
+# TicTacToeTheInternational by Nelson Klyde B. Antonio
 TicTacToe game that is inspired with Dota 2 The International 2018
 
 # Tic Tac Toe Game
@@ -48,16 +48,7 @@ Pillow: This Python Imaging Library is needed for image processing within the ga
 # Compatibility Information
 The game has been tested on Windows 10. It should work on any platform that supports Python and Tkinter (e.g., macOS, Linux), but specific file paths to images need to be adjusted accordingly.
 
-Ensure that the image file paths in the code are correctly set to match your local directory structure.
 
-
-## Customization for the image file paths
-	You may need to update the paths to images (RC.png, DC.jpg, NICE.png, INTRO.png, MAP.webp, ENDS.png) based on where they are stored on your system.
-****CODE REFERENCE:**** Image.open(r"C:\Users\*****\Desktop\Python Project Folder\RC.png")
-
-You may need to update the paths to images (RC.png, DC.jpg, NICE.png, INTRO.png, MAP.webp, ENDS.png) based on where they are stored on your system.
-
-UI Theme: The game's visual elements (colors, fonts, images) are customizable in the code. Feel free to modify these to suit your preferred theme.
 
 
 END NOTE: 
