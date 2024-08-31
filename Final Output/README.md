@@ -1,4 +1,4 @@
-**TicTacToeTheInternational (Nelson Klyde B. Antonio)**
+#**TicTacToeTheInternational (Nelson Klyde B. Antonio)**
 
 # Game Overview
 
