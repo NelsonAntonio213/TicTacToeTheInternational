@@ -1,10 +1,10 @@
-#**TicTacToeTheInternational (Nelson Klyde B. Antonio)**
+**#**TicTacToeTheInternational (Nelson Klyde B. Antonio)****
 
 # Game Overview
 
 This Tic Tac Toe game allows two players to compete against each other in a fun and interactive environment. The game offers different series match modes (Best of 5, 9, or 13) where the first player to reach the required number of wins is declared the overall champion. The game also includes unique mechanics, such as limiting visible moves to the last three and a custom-themed end game screen to enhance the player experience.
 
-#**Key Features**
+******Key Features******
 
 - Dynamic Move Visibility: Only the last three moves of each player are visible on the board, adding a strategic element to the game.
 - Custom Game Modes: Choose from different series match modes (Best of 5, 9, 13).
