@@ -1,4 +1,4 @@
-# TicTacToeTheInternational by Nelson Klyde B. Antonio
+# TicTacToeTheInternational (Nelson Klyde B. Antonio)
 TicTacToe game that is inspired with Dota 2 The International 2018
 
 # Tic Tac Toe Game
